@@ -1,8 +1,7 @@
-/*
 'use strict'
-
 var fetch = require('node-fetch');
-console.log(fetch);
+// import {fetch} from 'node-fetch';
+
 
 const makeRequest = async () => {
 	const res = await fetch("http://httpbin.org/get");
@@ -11,9 +10,4 @@ const makeRequest = async () => {
 };
 
 module.exports = makeRequest;
-*/
 
-const makeRequest = async () => {
-	const test = 'a';
-	return test;
-};

@@ -20,8 +20,18 @@
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "fetch-mock": "^7.2.5",
     "jest": "^23.6.0",
+    "jest-fetch-mock": "^1.7.5",
+    "nock": "^10.0.2",
     "proxyquire": "^2.1.0"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   }
 }

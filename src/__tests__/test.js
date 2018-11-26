@@ -2,6 +2,7 @@
 
 const checkStatus = require('../lib/checkStatus');
 const postToSlack = require('../lib/postToSlack');
+// const fetch = require('jest-fetch-mock');
 const fetchMock = require('fetch-mock');
 const proxyquire = require('proxyquire');
 // const makeRequest = require('../mock/makeRequest');
@@ -17,21 +18,16 @@ const baseOptions = {
 
 describe('fetch-mock test', () => {
 	it('check fetch mock test', async () => {
-		/*
-		const myMock = fetchMock.sandbox().mock('*', 200, {
-			res: 'success'
-		});
-
-		const makeRequest = proxyquire('../mock/makeRequest', {
-		  'node-fetch': myMock
-		});
-		*/
-
-		var myMock = fetchMock.sandbox().mock('*',{hello: 'world'});
-		var makeRequest = proxyquire('../mock/makeRequest', {'test': 'b'})
-		// var makeRequest = proxyquire('../mock/makeRequest',{
-		//   'node-fetch': 'hello'
-		// });
+		const mock = jest.fn(() => 2);
+        global.fetch = require('jest-fetch-mock')
+        fetch.mockResponseOnce(JSON.stringify({ data: '12345' }))
+		// console.log(fetch('https://google.com'));
+        // console.log(mock());
+		// return;
+		var makeRequest = require('../mock/makeRequest');
+        // jest.mock('fetch', () => {
+        //     return jest.fn(() => );
+        // });
 
 		makeRequest().then(function(data) {
 		  console.log('got data', data);
